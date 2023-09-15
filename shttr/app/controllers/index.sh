@@ -3,5 +3,7 @@ DATE=$(date)
 export TITLE
 export DATE
 
-sh ${SHTTR_APP}/models/${CONTROLLER}
+MODEL_DATA=$(sh ${SHTTR_APP}/models/${CONTROLLER})
+export MODEL_DATA
+
 sh ${SHTTR_APP}/views/${CONTROLLER}
