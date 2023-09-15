@@ -1,0 +1,19 @@
+while [ -n $1 ]; do
+  esh_var=$(grep -o \(\(esh\).*\) $1)
+  var_count=$(echo ${esh_var} | wc -w)
+  if [ $var_count -eq 0 ]; then
+    cat $1
+  else
+    content=$(cat $1)
+    counter=1
+    while [ $counter -le $var_count ]; do
+      cur_esh=$(echo ${esh_var} | awk "{print \$${counter}}")
+      cur_esh_var=${cur_esh#*)}
+      cur_esh_var=${cur_esh_var%)}
+      content=$(echo ${content} | sed "s+${cur_esh}+$(printenv ${cur_esh_var})+")
+      counter=$(echo "${counter} + 1" | bc)
+    done
+    echo $content
+  fi
+  shift
+done

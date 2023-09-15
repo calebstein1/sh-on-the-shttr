@@ -1,0 +1,4 @@
+CONTROLLER=${SCRIPT_FILENAME##*/}
+export CONTROLLER
+
+sh ${SHTTR_APP}/controllers/${CONTROLLER}
