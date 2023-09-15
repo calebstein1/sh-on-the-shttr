@@ -19,6 +19,7 @@ Usage Instructions:
 - All your app files belong in the shttr/app directory tree
 - shttr/bin and shttr/lib are where files that may be updated will be
 - In order to create a new page, simply copy cgi-bin/index.sh to cgi-bin/NEW-PAGE.sh, then create the new files in shttr/app
+- Any work your model does will be available to the view in MODEL_DATA. Hopefully I'll be able to work it out to where the model can create several variables but it's not a priority right now.
 - Look at shttr/app for the default page, it's pretty simple, you can probably figure it out
 - NOTE: user accounts and local storage have not been implemented yet, these instructions will be updated when they are
 
