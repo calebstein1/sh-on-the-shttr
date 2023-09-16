@@ -1,0 +1,34 @@
+<h1>Readme</h1>
+<div class="readme">
+  <p>Shell on the Shttr is a cutting-edge, databaseless backend web framework built using posix compliant shell</p>
+  <p>It supports user accounts and local storage, as well as dynamically generated templates on the server</p>
+  <p>Supported frontend frameworks:</p>
+  <ul>
+    <li>HTML, CSS, and Javascript</li>
+    <li>Maybe others?</li>
+  </ul>
+  <p>Installation Instructions:</p>
+  <ul>
+    <li>Make sure you have a web server configured and running with CGI enabled</li>
+    <li>Put the shttr directory in /var/www and make sure /var/www/shttr is set as your root dir</li>
+    <li>Put the cgi-bin directory in /usr/lib (or wherever your CGI dir is configured to be)</li>
+    <li>Modify the environment variables in cgi-bin/index.sh if necessary</li>
+    <li>Configure your server or set up .htaccess so that the DirectoryIndex points to /cgi-bin/index.sh</li>
+  </ul>
+  <p>Usage Instructions:</p>
+  <ul>
+    <li>All your app files belong in the shttr/app directory tree</li>
+    <li>shttr/bin and shttr/lib are where files that may be updated will be</li>
+    <li>In order to create a new page, simply copy cgi-bin/index.sh to cgi-bin/NEW-PAGE.sh, then create the new files in shttr/app</li>
+    <li>Any work your model does will be available to the view in MODEL_DATA. Hopefully I'll be able to work it out to where the model can create several variables but it's not a priority right now.</li>
+    <li>Look at shttr/app for the default page, it's pretty simple, you can probably figure it out</li>
+    <li>NOTE: user accounts and local storage have not been implemented yet, these instructions will be updated when they are</li>
+  </ul>
+  <p>ESH Instructions:</p>
+  <ul>
+    <li>ESH is super simple</li>
+    <li>Define and export an environment variable in your controller</li>
+    <li>Use the syntax ((esh)ENV_VAR) in your view html file</li>
+    <li>The string will magically be replaced by the value of the variable from your controller</li>
+  </ul>
+</div>

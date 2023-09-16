@@ -3,3 +3,9 @@ body {
   flex-direction: column;
   display: flex;
 }
+.nav {
+  display: flex;
+}
+.readme {
+  align-items: flex-start;
+}
