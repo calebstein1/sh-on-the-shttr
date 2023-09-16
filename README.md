@@ -2,12 +2,6 @@
 
 Shell on the Shttr is a cutting-edge, databaseless backend web framework built using posix compliant shell
 
-It supports user accounts and local storage, as well as dynamically generated templates on the server
-
-Supported frontend frameworks:
-- HTML, CSS, and Javascript
-- Maybe others?
-
 Installation Instructions:
 - Make sure you have a web server configured and running with CGI enabled
 - Put the shttr directory in /var/www and make sure /var/www/shttr is set as your root dir
