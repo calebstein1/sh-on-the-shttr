@@ -5,7 +5,7 @@ Shell on the Shttr is a cutting-edge, databaseless backend web framework built u
 It supports user accounts and local storage, as well as dynamically generated templates on the server
 
 Supported frontend frameworks:
-- HTML, CSS, and (maybe) Javascript
+- HTML, CSS, and Javascript
 - Maybe others?
 
 Installation Instructions:
