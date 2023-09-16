@@ -5,6 +5,7 @@ body {
 }
 .nav {
   display: flex;
+  gap: 16px;
 }
 .readme {
   align-items: flex-start;
