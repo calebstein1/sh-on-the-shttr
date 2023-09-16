@@ -11,7 +11,7 @@ while [ -n $1 ]; do
       cur_esh_var=${cur_esh#*)}
       cur_esh_var=${cur_esh_var%)}
       content=$(echo ${content} | sed "s+${cur_esh}+$(printenv ${cur_esh_var})+")
-      counter=$(echo "${counter} + 1" | bc)
+      counter=$((counter+1))
     done
     echo $content
   fi
