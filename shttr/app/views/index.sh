@@ -1,4 +1,6 @@
-sh ${SHTTR_LIB}/esh ${SHTTR_APP}/views/shared/app.html \
-${SHTTR_APP}/views/shared/nav.html \
-${SHTTR_APP}/views/index/index.html \
-${SHTTR_APP}/views/shared/btm.html
+. ${SHTTR_LIB}/esh
+
+v shared/app.html
+v shared/nav.html
+v index/index.html
+v shared/btm.html

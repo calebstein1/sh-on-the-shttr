@@ -1,10 +1,11 @@
-while [ -n $1 ]; do
-  esh_var=$(grep -o \(\(esh\).*\) $1)
+v() {
+  view=${SHTTR_APP}/views/${1}
+  esh_var=$(grep -o \(\(esh\).*\) $view)
   var_count=$(echo ${esh_var} | wc -w)
   if [ $var_count -eq 0 ]; then
-    cat $1
+    cat $view
   else
-    content=$(cat $1)
+    content=$(cat $view)
     counter=1
     while [ $counter -le $var_count ]; do
       cur_esh=$(echo ${esh_var} | awk "{print \$${counter}}")
@@ -15,5 +16,4 @@ while [ -n $1 ]; do
     done
     echo $content
   fi
-  shift
-done
+}
