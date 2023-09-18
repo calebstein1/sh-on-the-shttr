@@ -18,6 +18,8 @@ Usage Instructions:
 - Any work your model does will be available to the view in MODEL_DATA. Hopefully I'll be able to work it out to where the model can create several variables but it's not a priority right now.
 - Look at shttr/app for the default page, it's pretty simple, you can probably figure it out
 - There is now a very basic local storage system in place. It currently doesn't support any user accounts or authentication. To use it, simply make sure your ${SHTTR_ASSETS}/storage directory is writable by your web server's user account, then follow the example in the Local Storage demo.
+- The send_email method in the mailer module currently expects encoded strings as would be received by the server from a form. This works well enough for the demo, but this functionality will be moved into its own method eventually as this behavior is not desired when used for automated mailers
+- The mailer module requires a functioning postfix server as well as the mail command, and it's a good idea to make sure DKIM, DMARC, and SPF are set up. That is all way beyond the scope of these instructions, but following steps 1-3 of the Setup an Email Server course on [landchad.net](https://landchad.net) will get your server where it needs to be to send emails with the mailer module
 
 ESH Instructions:
 - ESH is super simple
