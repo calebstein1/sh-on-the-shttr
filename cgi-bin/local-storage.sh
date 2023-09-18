@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
-  printf "Status:303\nLocation: /cgi-bin/local-storage.sh\n"
+  printf "Status:303\nLocation: ${SCRIPT_NAME}\n"
 fi
 
 printf 'Content-Type: text/html\n\n'
