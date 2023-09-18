@@ -1,0 +1,6 @@
+send_email() {
+  email=$(echo "$1" | sed 's/%40/@/')
+  subject=$(echo "$2" | tr "+" " ")
+  message=$(echo "$3" | sed "s/+/ /g;s/%3F/?/g;s/%27/'/g;s/%2C/,/g;s/%22/\"/g;s/%3A/:/g;s/%3B/;/g;s/%21/!/g;s/%0A/\n/g")
+  echo "${message}" | mail -s "${subject}" ${email}
+}

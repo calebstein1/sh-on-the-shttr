@@ -1,0 +1,17 @@
+<h1>Mailer Demo</h1>
+<form action="/cgi-bin/mailer.sh" method="post">
+  <div class="grid">
+    <div>
+      <label for="email">Email: </label>
+      <input type="email" name="email" id="email">
+      <label for="subject">Subject: </label>
+      <input type="text" name="subject" id="subject">
+    </div>
+    <div>
+      <label for="message">Message:</label>
+      <textarea rows="5" name="message" id="message"></textarea>
+    </div>
+  </div>
+  <input type="submit" value="Send">
+</form>
+<p>((esh)MODEL_DATA)</p>
