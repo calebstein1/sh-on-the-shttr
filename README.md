@@ -1,8 +1,8 @@
 # :toilet: Shell on the Shttr :toilet:
 
-Shell on the Shttr is a cutting-edge, databaseless backend web framework built using posix compliant shell
+Shell on the Shttr is a cutting-edge, databaseless backend web framework built using shell scripts
 
-The live demo example page can be found at [shttr.xyz](https://shttr.xyz)
+The live demo example page can be found at [shttr.io](https://shttr.io)
 
 Installation Instructions:
 - Make sure you have a web server configured and running with CGI enabled
