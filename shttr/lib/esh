@@ -1,3 +1,5 @@
+printf 'Content-Type: text/html\n\n'
+
 v() {
   view=${SHTTR_APP}/views/${1}
   esh_var=$(grep -o \(\(esh\).*\) $view)

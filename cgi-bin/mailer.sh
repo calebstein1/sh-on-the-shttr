@@ -4,8 +4,6 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
   printf "Status:303\nLocation: ${SCRIPT_NAME}?success=Message sent successfully!\n"
 fi
 
-printf 'Content-Type: text/html\n\n'
-
 SHTTR_BIN="/var/www/shttr/bin"
 SHTTR_LIB="/var/www/shttr/lib"
 SHTTR_APP="/var/www/shttr/app"
