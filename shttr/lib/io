@@ -1,29 +1,41 @@
+envlist=$(printenv | cut -d= -f1)
+export envlist
+
 parse_input() {
   query_list=$(echo $QUERY_STRING | tr "&" " ")
   query_counter=$(echo $query_list | wc -w)
   counter=1
   while [ $counter -le $query_counter ]; do
     query_var=$(echo $query_list | awk "{print \$${counter}}")
+    verify_input "${query_var%=*}"
     eval $query_var
-    export ${query_var%=.*}
+    export $query_var
     counter=$((counter+1))
   done
 
-  post_list=$(cat /dev/stdin | tr "&" " ")
+  post_list=$(cat | tr "&" " ")
   post_counter=$(echo $post_list | wc -w)
   counter=1
   while [ $counter -le $post_counter ]; do
     post_var=$(echo $post_list | awk "{print \$${counter}}")
-    post_var_name="${post_var%=.*}"
-    post_var_val="${post_var#.*=}"
-    eval $post_var_name=\$post_var_val
-    export ${post_var_name}
+    echo $post_var >> /var/www/shttr/app/assets/storage/test
+    verify_input "${post_var%=*}"
+    eval $post_var
+    export $post_var
     counter=$((counter+1))
   done
 }
 
 fix_post_spaces() {
   echo $1 | tr "+" " "
+}
+
+verify_input() {
+  for var in $envlist; do
+    if [ "$var" = "$1" ]; then
+      echo "error"
+    fi
+  done
 }
 
 write_file() {
