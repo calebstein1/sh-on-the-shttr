@@ -8,13 +8,10 @@ v() {
     cat $view
   else
     content=$(cat $view)
-    counter=1
-    while [ $counter -le $var_count ]; do
-      cur_esh=$(echo ${esh_var} | awk "{print \$${counter}}")
+    for cur_esh in $esh_var; do
       cur_esh_var=${cur_esh#*)}
       cur_esh_var=${cur_esh_var%)}
       content=$(echo ${content} | sed "s+${cur_esh}+$(printenv ${cur_esh_var})+")
-      counter=$((counter+1))
     done
     echo $content
   fi
