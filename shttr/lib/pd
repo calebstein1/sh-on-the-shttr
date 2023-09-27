@@ -1,0 +1,4 @@
+pd() {
+  view="${SHTTR_APP}/views/${1}"
+  pandoc -t html "$view"
+}
