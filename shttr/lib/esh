@@ -1,13 +1,18 @@
 printf 'Content-Type: text/html\n\n'
 
 v() {
-  view=${SHTTR_APP}/views/${1}
-  esh_var=$(grep -o \(\(esh\).*\) $view)
+  if [ $1 ]; then
+    view=$(cat ${SHTTR_APP}/views/${1})
+  else
+    view="$(cat)"
+  fi
+
+  esh_var=$(echo "$view" | grep -o \(\(esh\).*\))
   var_count=$(echo ${esh_var} | wc -w)
   if [ $var_count -eq 0 ]; then
-    cat $view
+    echo "$view"
   else
-    content=$(cat $view)
+    content=$(echo "$view")
     for cur_esh in $esh_var; do
       cur_esh_var=${cur_esh#*)}
       cur_esh_var=${cur_esh_var%)}
