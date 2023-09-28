@@ -1,6 +1,7 @@
 . ${SHTTR_LIB}/esh
+. ${SHTTR_LIB}/pd
 
 v shared/app.html
 v shared/nav.html
-v index/index.html
+pd index/index.md
 v shared/btm.html
