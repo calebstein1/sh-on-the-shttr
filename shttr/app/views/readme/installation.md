@@ -1,7 +1,9 @@
 ###### Installation Instructions:
 
-- Make sure you have a web server configured and running with CGI enabled.
-- Put the shttr directory in /var/www and make sure /var/www/shttr is set as your root dir.
-- Put the cgi-bin directory in /usr/lib (or wherever your CGI dir is configured to be).
-- Modify the environment variables in cgi-bin/index.sh if necessary.
-- Configure your server or set up .htaccess so that the DirectoryIndex points to /cgi-bin/index.sh.
+- Make sure you have a web server configured and running with CGI enabled, the cgi-bin dir should be in /usr/lib (this is the default for apache2).
+- Configure your server so that the DirectoryIndex points to /cgi-bin/index.sh.
+- Download [Shttr CLI](https://github.com/calebstein1/shttr){target=_blank} and add it to your PATH.
+- Run 'shttr n [app name]' to create a new Shttr app that's populated with this demo site.
+- Add your server's ssh login information to shttr-config in the format user@example.com (delete the example entry).
+- Run 'shttr d' in the project's root to deploy the demo app to your server. If all went well, you should be able to navigate to your domain and see the demo site.
+- If the demo worked, go ahead and delete/modify the demo files and create your app!
