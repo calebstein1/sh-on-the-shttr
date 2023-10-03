@@ -1,8 +1,3 @@
 shttr/app/assets/scripts/vendored/* linguist-vendored
 shttr/app/assets/stylesheets/vendored/* linguist-vendored
-shttr/app/assets/stylesheets/vendored/components/* linguist-vendored
-shttr/app/assets/stylesheets/vendored/content/* linguist-vendored
-shttr/app/assets/stylesheets/vendored/layout/* linguist-vendored
-shttr/app/assets/stylesheets/vendored/themes/* linguist-vendored
-shttr/app/assets/stylesheets/vendored/utilities/* linguist-vendored
 shttr/app/assets/public/* linguist-vendored
