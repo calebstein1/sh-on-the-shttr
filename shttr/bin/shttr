@@ -1,4 +1,7 @@
 CONTROLLER=${SCRIPT_FILENAME##*/}
 export CONTROLLER
 
+STYLESHEET="${SHTTR_ASSETS}/public/$(find ${SHTTR_APP}/assets/public/*.css -printf %f)"
+export STYLESHEET
+
 sh ${SHTTR_APP}/controllers/${CONTROLLER}
