@@ -1,5 +1,5 @@
 shttr/app/assets/scripts/vendored/* linguist-vendored
-shttr/app/assets/stylesheets/vendored/*.scss linguist-vendored
+shttr/app/assets/stylesheets/vendored/* linguist-vendored
 shttr/app/assets/stylesheets/vendored/components/* linguist-vendored
 shttr/app/assets/stylesheets/vendored/content/* linguist-vendored
 shttr/app/assets/stylesheets/vendored/layout/* linguist-vendored
