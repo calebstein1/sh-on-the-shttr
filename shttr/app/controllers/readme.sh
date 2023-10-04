@@ -5,8 +5,7 @@ parse_input
 TITLE="Shttr Readme Page"
 export TITLE
 
-MODEL_DATA=$(sh ${SHTTR_APP}/models/${CONTROLLER})
-export MODEL_DATA
+. ${SHTTR_APP}/models/${CONTROLLER}
 
 if [ -z $p ]; then
   p="installation"

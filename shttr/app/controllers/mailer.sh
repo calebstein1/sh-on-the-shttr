@@ -6,8 +6,7 @@ parse_input
 TITLE="Mailer Demo"
 export TITLE
 
-MODEL_DATA=$(sh ${SHTTR_APP}/models/${CONTROLLER})
-export MODEL_DATA
+. ${SHTTR_APP}/models/${CONTROLLER}
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
   send_email "$email" "$subject" "$message"

@@ -9,10 +9,7 @@ if [ "$_method" = "delete" ]; then
   delete_file $id
 fi
 
-FORM_DATA=$(sh ${SHTTR_APP}/models/local-storage-form.sh)
-MODEL_DATA=$(sh ${SHTTR_APP}/models/${CONTROLLER})
-export FORM_DATA
-export MODEL_DATA
+. ${SHTTR_APP}/models/${CONTROLLER}
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
   [ -z $_method ] && write_file "$FORM_DATA"
