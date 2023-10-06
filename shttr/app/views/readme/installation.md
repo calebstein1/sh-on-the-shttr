@@ -7,4 +7,5 @@
 - You can specify a default css framework other than Pico.css by running `shttr n [app name] --tailwind`, or `shttr n [app name] --bootstrap`.
 - Add your server's ssh login information to shttr-config in the format user@example.com (delete the example entry).
 - Run `shttr d` in the project's root to deploy the demo app to your server. If all went well, you should be able to navigate to your domain and see the demo site.
+- If you plan on using ShttrDB with your site, you'll need to run `shttr db:init` to set up the ShttrDB directory on the server.
 - If the demo worked, go ahead and delete/modify the demo files and create your app!
