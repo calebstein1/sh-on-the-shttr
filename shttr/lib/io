@@ -1,7 +1,7 @@
-envlist=$(printenv | cut -d= -f1)
-export envlist
-
 parse_input() {
+  envlist=$(printenv | cut -d= -f1)
+  export envlist
+
   query_list=$(echo $QUERY_STRING | tr "&" " ")
   for query_var in $query_list; do
     verify_input "$query_var"
@@ -17,8 +17,8 @@ parse_input() {
   done
 }
 
-fix_post_spaces() {
-  echo $1 | tr "+" " "
+url_string_decode() {
+  echo "$1" | sed "s/+/ /g;s/%3F/?/g;s/%27/'/g;s/%2C/,/g;s/%22/\"/g;s/%3A/:/g;s/%3B/;/g;s/%21/!/g;s/%40/@/;s/%0A/\n/g"
 }
 
 verify_input() {
