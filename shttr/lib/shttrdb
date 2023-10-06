@@ -54,22 +54,60 @@ read_each() {
   fi
 
   for id in $(find /var/shttrdb/${target} -mindepth 1 -type d -exec basename {} \; | sort -r); do
-    command="
-      ${target}_${id}() {
-        case \$1 in
-        "
-        for attr in $(find /var/shttrdb/${target}/${id} -mindepth 1 -type f -exec basename {} \;); do
-          command="${command}
-            ${attr}) cat /var/shttrdb/${target}/${id}/${attr};;
-          "
-        done
-        command="${command}
-        esac
-      }
-    "
-    eval "${command}"
+    generate_method ${target} ${id}
     id_list_var="${target}_id_list"
     eval "${id_list_var}=\"${id} \$${id_list_var}\""
   done
   eval "export ${id_list_var}"
+}
+
+read_id() {
+  if [ "$2" = "from" ]; then
+    target=$3
+  else
+    target=${CONTROLLER}
+  fi
+
+  id=$1
+  generate_method ${target} ${id}
+}
+
+find_by() {
+  if [ "$3" = "from" ]; then
+    target=$4
+  else
+    target=${CONTROLLER}
+  fi
+
+  attr="$1"
+  val="$2"
+  for entry in $(find /var/shttrdb/${target} -name "${attr}"); do
+    if [ "$val" = "$(cat ${entry})" ]; then
+      found_id=${entry%/*}
+      found_id=${found_id##*/}
+      echo ${found_id}
+      break
+    else
+      continue
+    fi
+  done
+}
+
+generate_method() {
+  target=$1
+  id=$2
+  command="
+    ${target}_${id}() {
+      case \$1 in
+      "
+      for attr in $(find /var/shttrdb/${target}/${id} -mindepth 1 -type f -exec basename {} \;); do
+        command="${command}
+          ${attr}) cat /var/shttrdb/${target}/${id}/${attr};;
+        "
+      done
+      command="${command}
+      esac
+    }
+  "
+  eval "${command}"
 }
