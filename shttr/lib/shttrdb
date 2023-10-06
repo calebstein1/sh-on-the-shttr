@@ -1,0 +1,75 @@
+create_table_entry() {
+  if [ "$1" = "in" ]; then
+    target=$2
+  else
+    target=${CONTROLLER}
+  fi
+  mkdir -p /var/shttrdb/${target}
+
+  if [ -z $(find /var/shttrdb/${target} -mindepth 1 -type d) ]; then
+    id="1"
+  else
+    highest_current_id=$(find /var/shttrdb/${target} -mindepth 1 -type d | sort -r | head -n1)
+    id=$(( ${highest_current_id##*/} + 1 ))
+  fi
+  mkdir /var/shttrdb/${target}/${id}
+  echo $id
+}
+
+write_data() {
+  if [ "$4" = "to" ]; then
+    target=$5
+  else
+    target=${CONTROLLER}
+  fi
+
+  id="$1"
+  attr="$(url_string_decode $2)"
+  val="$(url_string_decode $3)"
+
+  echo "$val" > /var/shttrdb/${target}/${id}/${attr}
+}
+
+delete_id() {
+  if [ "$2" = "from" ]; then
+    target=$3
+  else
+    target=${CONTROLLER}
+  fi
+
+  if [ -d /var/shttrdb/${target}/${1} ]; then
+    rm -rf /var/shttrdb/${target}/${1}
+  fi
+}
+
+read_each() {
+  if [ "$1" = "from" ]; then
+    target=$2
+  else
+    target=${CONTROLLER}
+  fi
+
+  if [ -z $(find /var/shttrdb/${target} -mindepth 1 -type d) ]; then
+    return
+  fi
+
+  for id in $(find /var/shttrdb/${target} -mindepth 1 -type d -exec basename {} \; | sort -r); do
+    command="
+      ${target}_${id}() {
+        case \$1 in
+        "
+        for attr in $(find /var/shttrdb/${target}/${id} -mindepth 1 -type f -exec basename {} \;); do
+          command="${command}
+            ${attr}) cat /var/shttrdb/${target}/${id}/${attr};;
+          "
+        done
+        command="${command}
+        esac
+      }
+    "
+    eval "${command}"
+    id_list_var="${target}_id_list"
+    eval "${id_list_var}=\"${id} \$${id_list_var}\""
+  done
+  eval "export ${id_list_var}"
+}

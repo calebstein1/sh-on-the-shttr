@@ -30,14 +30,3 @@ verify_input() {
     fi
   done
 }
-
-write_file() {
-  file_content="$1"
-  mkdir -p ${SHTTR_APP}/assets/storage/${CONTROLLER}
-  filename=$(echo "$file_content" | sha256sum | head -c 16)
-  echo "$file_content" > ${SHTTR_APP}/assets/storage/${CONTROLLER}/${filename}
-}
-
-delete_file() {
-  rm ${SHTTR_APP}/assets/storage/${CONTROLLER}/${1}
-}
