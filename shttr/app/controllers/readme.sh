@@ -12,4 +12,4 @@ if [ -z $p ]; then
   export p
 fi
 
-sh ${SHTTR_APP}/views/${CONTROLLER}
+. ${SHTTR_APP}/views/${CONTROLLER}
