@@ -7,17 +7,5 @@ v() {
     view="$(cat)"
   fi
 
-  esh_var=$(echo "$view" | grep -o \(\(esh\).*\))
-  var_count=$(echo ${esh_var} | wc -w)
-  if [ $var_count -eq 0 ]; then
-    echo "$view"
-  else
-    content=$(echo "$view")
-    for cur_esh in $esh_var; do
-      cur_esh_var=${cur_esh#*)}
-      cur_esh_var=${cur_esh_var%)}
-      content=$(echo ${content} | sed "s+${cur_esh}+$(printenv ${cur_esh_var})+")
-    done
-    echo $content
-  fi
+  echo "${view}" | envsubst
 }

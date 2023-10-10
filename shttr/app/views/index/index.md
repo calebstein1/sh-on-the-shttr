@@ -2,7 +2,7 @@
 
 If you're seeing this, then it's running properly!
 
-And by the way, it's currently ((esh)MODEL_DATA)
+And by the way, it's currently ${MODEL_DATA}
 
 Isn't that cool? That date was written in esh to show off how it works.
 

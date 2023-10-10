@@ -6,7 +6,7 @@ export STYLESHEET
 
 VENDOR_SCRIPT_LIST="$(find ${SHTTR_APP}/assets/scripts/vendored/*.js -type f -exec basename {} \;)"
 for VENDOR_SCRIPT in $VENDOR_SCRIPT_LIST; do
-  VENDOR_SCRIPTS="${VENDOR_SCRIPTS}\n<script src=\"${SHTTR_ASSETS}/scripts/vendored/${VENDOR_SCRIPT}\"></script>"
+  VENDOR_SCRIPTS="${VENDOR_SCRIPTS}<script src=\"${SHTTR_ASSETS}/scripts/vendored/${VENDOR_SCRIPT}\"></script>"
 done
 export VENDOR_SCRIPTS
 

@@ -1,0 +1,9 @@
+<p>
+  <strong>Name:</strong> ${commenter}<br>
+  <strong>Comment:</strong> ${comment}
+  <button class="secondary" style="padding:4px;" form="${id}" data-turbo-confirm="Are you sure?">Delete</button>
+</p>
+<form id="${id}" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="hidden" name="id" value="${id}" />
+</form>
