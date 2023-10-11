@@ -9,8 +9,8 @@ create_table_entry() {
   if [ -z $(find /var/shttrdb/${target} -mindepth 1 -type d) ]; then
     id="1"
   else
-    highest_current_id=$(find /var/shttrdb/${target} -mindepth 1 -type d | sort -r | head -n1)
-    id=$(( ${highest_current_id##*/} + 1 ))
+    highest_current_id=$(find /var/shttrdb/${target} -mindepth 1 -type d -exec basename {} \; | sort -nr | head -n1 )
+    id=$(( ${highest_current_id} + 1 ))
   fi
   mkdir /var/shttrdb/${target}/${id}
   echo $id
@@ -53,7 +53,7 @@ read_each() {
     return
   fi
 
-  for id in $(find /var/shttrdb/${target} -mindepth 1 -type d -exec basename {} \; | sort); do
+  for id in $(find /var/shttrdb/${target} -mindepth 1 -type d -exec basename {} \; | sort -n); do
     generate_method ${target} ${id}
     id_list_var="${target}_id_list"
     eval "${id_list_var}=\"${id} \$${id_list_var}\""
