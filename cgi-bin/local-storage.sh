@@ -1,9 +1,5 @@
 #!/bin/sh
 
-if [ "$REQUEST_METHOD" = "POST" ]; then
-  printf "Status:303\nLocation: ${SCRIPT_NAME}\n"
-fi
-
 SHTTR_BIN="/var/www/shttr/bin"
 SHTTR_LIB="/var/www/shttr/lib"
 SHTTR_APP="/var/www/shttr/app"
