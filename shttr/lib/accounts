@@ -1,0 +1,22 @@
+register() {
+  salt=$(openssl rand -base64 32)
+  username="$1"
+  if [ -z "$(find_by username $(url_string_decode ${username}) from users)" ]; then
+    do_redirect to "$3"
+  else
+    do_error && return 1
+  fi
+  password=$(hash_password "$2" "${salt}")
+  user_id=$(create_table_entry in users)
+  
+  write_data ${user_id} "username" "${username}" to users
+  write_data ${user_id} "password" "${password}" to users
+  write_data ${user_id} "salt" "${salt}" to users
+}
+
+hash_password() {
+  password="$1"
+  salt="$2"
+
+  echo "${password}" | openssl passwd -stdin -salt "${salt}"
+}
