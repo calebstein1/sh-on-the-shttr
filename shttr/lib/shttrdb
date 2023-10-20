@@ -79,9 +79,13 @@ find_by() {
     target=${CONTROLLER}
   fi
 
+  if [ "$5" = "with_params" ]; then
+    params="$6"
+  fi
+
   attr="$1"
   val="$2"
-  for entry in $(find /var/shttrdb/${target} -name "${attr}"); do
+  for entry in $(find /var/shttrdb/${target} -name "${attr}" ${params}); do
     if [ "$val" = "$(cat ${entry})" ]; then
       found_id=${entry%/*}
       found_id=${found_id##*/}
