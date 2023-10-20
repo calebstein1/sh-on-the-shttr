@@ -18,9 +18,15 @@ if [ -z $p ]; then
 fi
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
-  if [ $validated ]; then
-    register "${username}" "${password}" "/cgi-bin/account.sh" &&\
-    send_email "${username}" "Welcome to Shttr!" "You just registered for Shttr, congratulations!\n\nShell on the Shttr"
+  if [ "$_action" = "sign_up" ]; then
+    if [ $validated ]; then
+      register "${username}" "${password}" "/cgi-bin/account.sh" &&\
+      send_email "${username}" "Welcome to Shttr!" "You just registered for Shttr, congratulations!\n\nShell on the Shttr"
+    fi
+  elif [ "$_action" = "sign_in" ]; then
+    if [ $validated ]; then
+      sign_in "${username}" "${password}" "/cgi-bin/account.sh"
+    fi
   fi
 fi
 
