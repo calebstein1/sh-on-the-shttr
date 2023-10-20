@@ -18,7 +18,7 @@ hash_password() {
   password="$1"
   salt="$2"
 
-  echo "${password}" | openssl passwd -stdin -salt "${salt}"
+  echo "${password}" | openssl passwd -6 -stdin -salt "${salt}"
 }
 
 sign_in() {
