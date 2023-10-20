@@ -20,7 +20,7 @@ fi
 if [ "$REQUEST_METHOD" = "POST" ]; then
   if [ "$_action" = "sign_up" ]; then
     if [ $validated ]; then
-      register "${username}" "${password}" "/cgi-bin/account.sh" &&\
+      register "${username}" "${password}" "?p=sign_in" &&\
       send_email "${username}" "Welcome to Shttr!" "You just registered for Shttr, congratulations!\n\nShell on the Shttr"
     fi
   elif [ "$_action" = "sign_in" ]; then
