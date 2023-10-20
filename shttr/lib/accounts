@@ -35,8 +35,22 @@ sign_in() {
   password_hash=$(hash_password "${password}" "${salt}")
 
   if [ "$password_hash" = "$(users_${user_id} password)" ]; then
+    auth=$(openssl rand -hex 32)
+    write_data ${user_id} "auth" "${auth}" to users
+    printf "Set-Cookie: auth=${auth}; secure\n"
     do_redirect to "$3"
   else
     do_error && return 1
+  fi
+}
+
+check_sign_in() {
+  parse_cookies
+
+  user_id=$(find_by auth ${auth} from users with_params "-mtime 0")
+  if [ $user_id ]; then
+    read_id $user_id from users
+    signed_in=1
+    export signed_in
   fi
 }
