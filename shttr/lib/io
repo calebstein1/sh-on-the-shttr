@@ -17,6 +17,18 @@ parse_input() {
   done
 }
 
+parse_cookies() {
+  envlist=$(printenv | cut -d= -f1)
+  export envlist
+
+  cookies_list=$(echo $HTTP_COOKIE | sed 's/; / /')
+  for cookie_var in $cookies_list; do
+    verify_input "$cookie_var"
+    eval $cookie_var
+    export $cookie_var
+  done
+}
+
 url_string_decode() {
   echo "$1" | sed "s/+/ /g;s/%3F/?/g;s/%27/'/g;s/%2C/,/g;s/%22/\"/g;s/%3A/:/g;s/%3B/;/g;s/%21/!/g;s/%40/@/;s/%0A/\n/g"
 }
