@@ -44,6 +44,11 @@ sign_in() {
   fi
 }
 
+sign_out() {
+  printf "Set-Cookie: auth=; secure\n"
+  do_redirect to "$1"
+}
+
 check_sign_in() {
   parse_cookies
 
