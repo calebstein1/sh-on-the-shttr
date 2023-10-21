@@ -12,6 +12,11 @@ export TITLE
 . ${SHTTR_APP}/models/${CONTROLLER}
 export MODEL_DATA
 
+check_sign_in
+if [ $signed_in ]; then
+  do_redirect to "/cgi-bin/account.sh"
+fi
+
 if [ -z $p ]; then
   p="sign_up"
   export p
