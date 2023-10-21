@@ -1,5 +1,5 @@
 register() {
-  salt=$(openssl rand -base64 32)
+  salt=$(openssl rand -hex 32)
   username="$1"
   if [ -z "$(find_by username $(url_string_decode ${username}) from users)" ]; then
     do_redirect to "$3"
