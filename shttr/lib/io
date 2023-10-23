@@ -4,14 +4,14 @@ parse_input() {
 
   query_list=$(echo $QUERY_STRING | tr "&" " ")
   for query_var in $query_list; do
-    verify_input "$query_var"
+    verify_input "$query_var" &&\
     eval $query_var
     export $query_var
   done
 
   post_list=$(cat | tr "&" " ")
   for post_var in $post_list; do
-    verify_input "$post_var"
+    verify_input "$post_var" &&\
     eval $post_var
     export $post_var
   done
@@ -34,11 +34,15 @@ url_string_decode() {
 }
 
 verify_input() {
-  [ -z $(echo "$1" | grep "=") ] && echo "error"
+  if [ -z $(echo "$1" | grep "=") ]; then
+    echo "error"
+    return 1
+  fi
 
   for var in $envlist; do
     if [ "$var" = "${1%=*}" ]; then
       echo "error"
+      return 1
     fi
   done
 }
