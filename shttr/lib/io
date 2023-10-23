@@ -30,7 +30,7 @@ parse_cookies() {
 }
 
 url_string_decode() {
-  echo "$1" | sed "s/+/ /g;s/%3F/?/g;s/%27/'/g;s/%2C/,/g;s/%22/\"/g;s/%3A/:/g;s/%3B/;/g;s/%21/!/g;s/%40/@/;s/%0A/\n/g"
+  echo "$1" | sed "s/+/ /g;s/%2F/\//g;s/%3F/?/g;s/%27/'/g;s/%2C/,/g;s/%22/\"/g;s/%3A/:/g;s/%3B/;/g;s/%21/!/g;s/%40/@/;s/%0A/\n/g"
 }
 
 verify_input() {
