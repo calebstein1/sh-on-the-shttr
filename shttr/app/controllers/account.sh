@@ -18,4 +18,4 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
   fi
 fi
 
-sh ${SHTTR_APP}/views/${CONTROLLER}
+. ${SHTTR_APP}/views/${CONTROLLER}

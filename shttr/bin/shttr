@@ -10,4 +10,7 @@ for VENDOR_SCRIPT in $VENDOR_SCRIPT_LIST; do
 done
 export VENDOR_SCRIPTS
 
+signed_in=0
+export signed_in
+
 sh ${SHTTR_APP}/controllers/${CONTROLLER}

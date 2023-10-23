@@ -4,7 +4,7 @@
 v shared/app.html
 v shared/nav.html
 
-if [ $signed_in ]; then
+if [ $signed_in -eq 1 ]; then
   v local-storage/index.html
 else
   echo '<div class="grid"><div>'

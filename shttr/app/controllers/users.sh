@@ -13,7 +13,7 @@ export TITLE
 export MODEL_DATA
 
 check_sign_in
-if [ $signed_in ]; then
+if [ $signed_in -eq 1 ]; then
   do_redirect to "/cgi-bin/account.sh"
 fi
 
@@ -37,4 +37,4 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
   fi
 fi
 
-sh ${SHTTR_APP}/views/${CONTROLLER}
+. ${SHTTR_APP}/views/${CONTROLLER}
