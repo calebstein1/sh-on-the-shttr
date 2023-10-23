@@ -36,13 +36,13 @@ url_string_decode() {
 verify_input() {
   if [ -z $(echo "$1" | grep "=") ]; then
     echo "error"
-    return 1
+    exit 1
   fi
 
   for var in $envlist; do
     if [ "$var" = "${1%=*}" ]; then
       echo "error"
-      return 1
+      exit 1
     fi
   done
 }
