@@ -1,4 +1,4 @@
 if [ $signed_in ]; then
-  username=$(users_${user_id} username)
+  username=$(signed_in_user username)
   export username
 fi

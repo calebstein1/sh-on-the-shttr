@@ -28,7 +28,7 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
 fi
 
 if [ $signed_in ]; then
-  name=$(users_${user_id} name)
+  name=$(signed_in_user name)
   export name
   export user_id
 fi

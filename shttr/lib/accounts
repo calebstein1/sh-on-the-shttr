@@ -57,5 +57,6 @@ check_sign_in() {
     read_id $user_id from users
     signed_in=1
     export signed_in
+    alias signed_in_user=users_${user_id}
   fi
 }

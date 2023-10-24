@@ -10,7 +10,6 @@ TITLE="Account Page Demo"
 export TITLE
 
 . ${SHTTR_APP}/models/${CONTROLLER}
-export MODEL_DATA
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
   if [ "$_action" = "sign_out" ]; then
