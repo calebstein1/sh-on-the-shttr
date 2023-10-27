@@ -1,0 +1,54 @@
+create_customer() {
+  [ $email ] && email_line="-d \"email\"=\"${email}\""
+  [ $name ] && name_line="-d \"name\"=\"${name}\""
+  [ $shipping_city ] && shipping_city_line="-d \"shipping[address][city]\"=\"${shipping_city}\""
+  [ $shipping_country ] && shipping_country_line="-d \"shipping[address][country]\"=\"${shipping_country}\""
+  [ $shipping_line1 ] && shipping_line1_line="-d \"shipping[address][line1]\"=\"${shipping_line1}\""
+  [ $shipping_line2 ] && shipping_line2_line="-d \"shipping[address][line2]\"=\"${shipping_line2}\""
+  [ $shipping_zip ] && shipping_zip_line="-d \"shipping[address][postal_code]\"=\"${shipping_zip}\""
+  [ $shipping_state ] && shipping_state_line="-d \"shipping[address][state]\"=\"${shipping_state}\""
+  [ $city ] && city_line="-d \"address[city]\"=\"${city}\""
+  [ $country ] && country_line="-d \"address[country]\"=\"${country}\""
+  [ $addr_line1 ] && addr_line1_line="-d \"address[line1]\"=\"${addr_line1}\""
+  [ $addr_line2 ] && addr_line2_line="-d \"address[line2]\"=\"${addr_line2}\""
+  [ $zip ] && zip_line="-d \"address[postal_code]\"=\"${zip}\""
+  [ $state ] && state_line="-d \"address[state]\"=\"${state}\""
+
+  curl -s https://api.stripe.com/v1/customers\
+    -u "${secret_key}:" \
+    ${email_line} \
+    ${name_line} \
+    ${shipping_city_line} \
+    ${shipping_country_line} \
+    ${shipping_line1_line} \
+    ${shipping_line2_line} \
+    ${shipping_zip_line} \
+    ${shipping_state_line} \
+    ${city_line} \
+    ${country_line} \
+    ${addr_line1_line} \
+    ${addr_line2_line} \
+    ${zip_line} \
+    ${state_line} \
+}
+
+charge() {
+  price=$1
+
+  payment_intent=$(curl -s https://api.stripe.com/v1/payment_intents \
+    -u "${secret_key}:" \
+    -d amount=${price} \
+    -d currency=usd \
+    -d "automatic_payment_methods[enabled]"=true)
+  client_secret_key=$(echo ${payment_intent} | awk -F\" '/client_secret/ {print $4}')
+  printf "Set-Cookie: stripe_client_secret=${client_secret_key}; secure\n"
+}
+
+if [ $1 ]; then
+  stripe_account_id=$(find_by $1 from stripe)
+else
+  stripe_account_id=1
+fi
+read_id ${stripe_account_id} from stripe
+secret_key=$(stripe_${stripe_account_id} secret_key)
+export secret_key
