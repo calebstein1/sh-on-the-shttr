@@ -41,7 +41,7 @@ do_redirect() {
   if [ "$1" = "to" ]; then
     redirect_location="$2"
   else
-    redirect_location-"${SCRIPT_NAME}"
+    redirect_location="${SCRIPT_NAME}"
   fi
   printf "Status:303\nLocation: ${redirect_location}\n"
 
