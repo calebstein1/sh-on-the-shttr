@@ -7,9 +7,10 @@ export TITLE
 
 . ${SHTTR_APP}/models/${CONTROLLER}
 
-if [ -z $p ]; then
+p=${REQUEST_URI##*/}
+if [ "$p" = "readme" ]; then
   p="installation"
-  export p
 fi
+export p
 
 . ${SHTTR_APP}/views/${CONTROLLER}

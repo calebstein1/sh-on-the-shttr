@@ -1,4 +1,4 @@
-printf "Status:200 OK\n"
+[ "$REQUEST_METHOD" = "GET" ] && printf "Status:200 OK\n"
 
 STYLESHEET="${SHTTR_ASSETS}/public/$(find ${SHTTR_APP}/assets/public/*.css -printf %f)"
 export STYLESHEET
