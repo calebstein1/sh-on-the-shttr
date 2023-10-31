@@ -18,15 +18,20 @@ parse_input() {
 }
 
 parse_cookies() {
-  envlist=$(printenv | cut -d= -f1)
-  export envlist
+  if [ $cookies_parsed ]; then
+    return
+  else
+    envlist=$(printenv | cut -d= -f1)
+    export envlist
 
-  cookies_list=$(echo $HTTP_COOKIE | sed 's/; / /')
-  for cookie_var in $cookies_list; do
-    verify_input "$cookie_var"
-    eval $cookie_var
-    export $cookie_var
-  done
+    cookies_list=$(echo $HTTP_COOKIE | sed 's/; / /')
+    for cookie_var in $cookies_list; do
+      verify_input "$cookie_var"
+      eval $cookie_var
+      export $cookie_var
+    done
+    cookies_parsed=1
+  fi
 }
 
 url_string_decode() {
