@@ -24,7 +24,7 @@ parse_cookies() {
     envlist=$(printenv | cut -d= -f1)
     export envlist
 
-    cookies_list=$(echo $HTTP_COOKIE | sed 's/; / /')
+    cookies_list=$(echo $HTTP_COOKIE | sed 's/; / /g')
     for cookie_var in $cookies_list; do
       verify_input "$cookie_var"
       eval $cookie_var
