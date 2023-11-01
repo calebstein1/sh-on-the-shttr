@@ -1,4 +1,4 @@
-. ${SHTTR_LIB}/esh
+use esh
 
 v shared/app.html
 v shared/nav.html

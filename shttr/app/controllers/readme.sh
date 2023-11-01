@@ -1,4 +1,4 @@
-. ${SHTTR_LIB}/io
+use io
 
 parse_input
 

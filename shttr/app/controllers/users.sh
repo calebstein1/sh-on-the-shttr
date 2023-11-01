@@ -1,8 +1,4 @@
-. ${SHTTR_LIB}/io
-. ${SHTTR_LIB}/shttrdb
-. ${SHTTR_LIB}/validator
-. ${SHTTR_LIB}/accounts
-. ${SHTTR_LIB}/mailer
+use io, shttrdb, validator, accounts, mailer
 
 parse_input
 

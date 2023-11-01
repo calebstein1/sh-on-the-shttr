@@ -1,7 +1,4 @@
-. ${SHTTR_LIB}/io
-. ${SHTTR_LIB}/shttrdb
-. ${SHTTR_LIB}/validator
-. ${SHTTR_LIB}/accounts
+use io, shttrdb, validator, accounts
 
 parse_input
 check_sign_in

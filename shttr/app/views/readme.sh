@@ -1,5 +1,4 @@
-. ${SHTTR_LIB}/esh
-. ${SHTTR_LIB}/pd
+use esh, pd
 
 v shared/app.html
 v shared/nav.html

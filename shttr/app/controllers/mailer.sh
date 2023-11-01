@@ -1,8 +1,4 @@
-. ${SHTTR_LIB}/io
-. ${SHTTR_LIB}/validator
-. ${SHTTR_LIB}/mailer
-. ${SHTTR_LIB}/shttrdb
-. ${SHTTR_LIB}/flash
+use io, validator, mailer, shttrdb, flash
 
 parse_input
 read_flash
