@@ -1,17 +1,17 @@
-set_flash() {
-  flash_msg="$(echo $1 | tr ' ' '+')"
-  printf "Set-Cookie: flash=${flash_msg}; secure\n"
+set_notice() {
+  notice_msg="$(echo $1 | tr ' ' '+')"
+  printf "Set-Cookie: notice=${notice_msg}; secure\n"
 }
 
-set_error() {
-  error_msg="$(echo $1 | tr ' ' '+')"
-  printf "Set-Cookie: error=${error_msg}; secure\n"
+set_alert() {
+  alert_msg="$(echo $1 | tr ' ' '+')"
+  printf "Set-Cookie: alert=${alert_msg}; secure\n"
 }
 
 read_flash() {
   parse_cookies
-  flash="$(url_string_decode $flash)"
-  error="$(url_string_decode $error)"
-  printf "Set-Cookie: flash=; secure\n"
-  printf "Set-Cookie: error=; secure\n"
+  notice="$(url_string_decode $notice)"
+  alert="$(url_string_decode $alert)"
+  printf "Set-Cookie: notice=; secure\n"
+  printf "Set-Cookie: alert=; secure\n"
 }

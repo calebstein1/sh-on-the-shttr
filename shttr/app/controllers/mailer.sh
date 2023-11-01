@@ -20,7 +20,7 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
     write_data ${mail_id} message ${message} to emails_sent
     write_data ${mail_id} sent_on "$(date +%F)" to emails_sent
     send_email "$email" "$subject" "$message"
-    set_flash "Mail sent successfully!"
+    set_notice "Mail sent successfully!"
   fi
 fi
 
