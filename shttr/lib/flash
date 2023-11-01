@@ -5,7 +5,7 @@ set_flash() {
 
 set_error() {
   error_msg="$(echo $1 | tr ' ' '+')"
-  printf "Set-Cookie: error=${flash_msg}; secure\n"
+  printf "Set-Cookie: error=${error_msg}; secure\n"
 }
 
 read_flash() {
