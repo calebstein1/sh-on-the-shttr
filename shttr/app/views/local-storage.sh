@@ -4,7 +4,7 @@ v shared/app.html
 v shared/nav.html
 
 if [ $signed_in -eq 1 ]; then
-  v local-storage/index.html
+  vf local-storage/index.html
 else
   echo '<div class="grid"><div>'
     pd local-storage/signed_out.md
@@ -18,7 +18,7 @@ for comment_id in $comments_id_list; do
   export commenter
   export comment
   export comment_id
-  v local-storage/comments.html
+  vf local-storage/comments.html
   if [ "${user_id}" = "$(comments_${comment_id} user_id)" ]; then
     echo "<button class=\"secondary\" style=\"padding:4px;\" form=\"${comment_id}\" data-turbo-confirm=\"Are you sure?\">Delete</button>"
   fi

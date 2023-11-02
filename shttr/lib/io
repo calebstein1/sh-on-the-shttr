@@ -1,20 +1,25 @@
 parse_input() {
-  envlist=$(printenv | cut -d= -f1)
-  export envlist
+  if [ $input_parsed ]; then
+    return
+  else
+    envlist=$(printenv | cut -d= -f1)
+    export envlist
 
-  query_list=$(echo $QUERY_STRING | tr "&" " ")
-  for query_var in $query_list; do
-    verify_input "$query_var" &&\
-    eval $query_var
-    export $query_var
-  done
+    query_list=$(echo $QUERY_STRING | tr "&" " ")
+    for query_var in $query_list; do
+      verify_input "$query_var" &&\
+      eval $query_var
+      export $query_var
+    done
 
-  post_list=$(cat | tr "&" " ")
-  for post_var in $post_list; do
-    verify_input "$post_var" &&\
-    eval $post_var
-    export $post_var
-  done
+    post_list=$(cat | tr "&" " ")
+    for post_var in $post_list; do
+      verify_input "$post_var" &&\
+      eval $post_var
+      export $post_var
+    done
+    input_parsed=1
+  fi
 }
 
 parse_cookies() {
