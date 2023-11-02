@@ -37,7 +37,7 @@ sign_in() {
   if [ "$password_hash" = "$(users_${user_id} password)" ]; then
     auth=$(openssl rand -hex 32)
     write_data ${user_id} "auth" "${auth}" to users
-    printf "Set-Cookie: auth=${auth}; secure\n"
+    printf "Set-Cookie: auth=${auth}; Path=/; secure\n"
     do_redirect to "$3"
   else
     do_error && return 1
@@ -45,7 +45,7 @@ sign_in() {
 }
 
 sign_out() {
-  printf "Set-Cookie: auth=; secure\n"
+  printf "Set-Cookie: auth=; Path=/; secure\n"
   do_redirect to "$1"
 }
 
