@@ -1,4 +1,4 @@
-use io, shttrdb, validator, accounts, mailer
+use io, shttrdb, validator, accounts, mailer, form
 
 parse_input
 
