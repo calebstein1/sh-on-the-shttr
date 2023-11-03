@@ -1,8 +1,16 @@
 ###### Usage Instructions:
 
-- All your app files belong in the shttr/app directory tree.
-- The shttr/bin and shttr/lib directories are where Shttr app files and modules live.
-- In order to create a new page, run `shttr g page [page name]` in the root of your Shttr app, it will generate the cgi-bin script and a barebones controller, as well as a blank model and view.
-- Any environment variables created and exported by your model will be available to its view.
-- Look at shttr/app for the default page, it's pretty simple, you can probably figure it out.
-- Modules can be used by a model, view, or controller by sourcing the module at the top of the script (ie. `. ${SHTTR_LIB}/MODULE_NAME`).
+- The two main directories you'll want to pay attention to in the root of your Shttr project are `cgi-bin` and `shttr`.
+- The `cgi-bin` directory contains the scripts that are the first to be executed by the server. Each script is the same, and it mainly just sets up the environment Shttr needs to handle the rest of the execution.
+- Within the `shttr` directory, you'll find three more directories: `bin`, `lib`, and `app`.
+- The `bin` and `lib` directories contain the Shttr program and modules respectively, and shouldn't need to be modified.
+- The `app` directory is where your app files go.
+- The ShttrCLI app can be used to update Shttr on a per app basis. Running `shttr su` will update the system's installed Shttr to the latest version pulled from git, and running `shttr u` in the root of a Shttr app will update the version of Shttr used by that app to the version installed on the system. Note that `shttr u` will only update the `shttr/bin` and `shttr/lib` directories, so you'll have to manually update your app files in case of any changes to the core Shttr API.
+- You shouldn't have to modify any of the scripts in `cgi-bin`, but these are the URL's you'll have to link to in your pages (ie. `<a href="/cgi-bin/about.sh">` for a page called `about`).
+- After the script in `cgi-bin` finishes, it hands execution over to the Shttr program, which finishes defining the environment and gathering assets, and finally hands control over to the page's controller script.
+- Generating new pages is done using ShttrCLI. In the root of your project, run `shttr g page [page name]` to generate the cgi-bin script, as well as a blank model, view, and controller for your page. If ShttrCLI finds a `nav.html` partial in the shared views directory, it will automatically be included in the new page's view. Who doesn't love convention over configuration?
+- Pages can be deleted from your project with ShttrCLI as well by running `shttr r page [page name]`.
+- The `shttr/app/assets` directory holds any assets your page can use.
+- The `stylesheets` directory within `assets` is where you'll put any css or scss files for your site. Running `shttr c` in the root of your project will compile all css and scss in the `stylesheets` directory into one css file named with a checksum digest and place it in the `public` directory under assets. This compiled css file will automatically be found by Shttr on the server and inserted into the `<head>` of every page.
+- The `scripts` directory under assets is where any external javascript files should go. All scripts in `scripts/vendored` will be loaded automatically on all pages, scripts just in the `scripts` directory will have to be loaded manually on each page that needs them.
+- The assets directory path is available in the enviromnent variable, `SHTTR_ASSETS`, which expands to `/app/assets` to be used in your view partials. This is in contrast to the `SHTTR_APP` environment variable, which expand to `/var/www/shttr/app`. This environment variable is meant to be used in your controller or model scripts, not in your view partials.
