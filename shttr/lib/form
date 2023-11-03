@@ -1,7 +1,3 @@
-new_form_auth_token=$(openssl rand -hex 32)
-export new_form_auth_token
-printf "Set-Cookie: form_auth_token=${new_form_auth_token}; Path=/; secure\n"
-
 if [ "$REQUEST_METHOD" = "POST" ]; then
   parse_input
   parse_cookies
@@ -14,6 +10,10 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
     do_error
     exit 1
   fi
+else
+  new_form_auth_token=$(openssl rand -hex 32)
+  export new_form_auth_token
+  printf "Set-Cookie: form_auth_token=${new_form_auth_token}; Path=/; secure\n"
 fi
 
 vf() {
