@@ -4,7 +4,7 @@ Shell on the Shttr is a cutting-edge, databaseless backend web framework built u
 
 The live demo example page can be found at [shttr.io](https://shttr.io).
 
-See the [instructions page](https://shttr.io/cgi-bin/readme.sh) at [shttr.io](https://shttr.io), or the [Shttr CLI](https://github.com/calebstein1/shttr) repo for detailed installation and usage instructions.
+See the [instructions page](https://shttr.io/cgi-bin/readme.sh) at [shttr.io](https://shttr.io), or the [Shttr CLI](https://git.calebstein.net/calebstein1/shttr) repo for detailed installation and usage instructions.
 
 Shell on the Shttr requires a functioning http server with CGI capability. It has been tested on Debian running Apache2, which works well.
 
