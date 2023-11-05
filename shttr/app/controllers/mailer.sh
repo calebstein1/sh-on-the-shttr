@@ -1,4 +1,4 @@
-use io, validator, mailer, shttrdb, flash
+use io, validator, mailer, shttrdb, flash, form
 
 parse_input
 read_flash
