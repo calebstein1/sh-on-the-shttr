@@ -2,5 +2,5 @@ use esh, pd
 
 v shared/app.html
 v shared/nav.html
-pd about/index.md
+pd index.md
 v shared/btm.html
