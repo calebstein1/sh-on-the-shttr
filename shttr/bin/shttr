@@ -1,6 +1,11 @@
 use() {
   while [ $1 ]; do
-    . ${SHTTR_LIB}/${1%,}
+    if [ -f ${SHTTR_LIB}/${1%,} ]; then
+      . ${SHTTR_LIB}/${1%,}
+    elif [ -d ${SHTTR_APP}/assets/node_modules/${1%,} ]; then
+      eval "node_$(echo ${1%,} | cut -d/ -f2)=${SHTTR_ASSETS}/node_modules/${1%,}"
+      eval "export node_$(echo ${1%,} | cut -d/ -f2)"
+    fi
     shift
   done
 }
