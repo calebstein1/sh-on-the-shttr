@@ -25,4 +25,5 @@ export VENDOR_SCRIPTS
 signed_in=0
 export signed_in
 
+. ${SHTTR_APP}/globals.sh
 . ${SHTTR_APP}/controllers/${CONTROLLER}
