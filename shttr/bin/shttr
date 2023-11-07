@@ -25,5 +25,7 @@ export VENDOR_SCRIPTS
 signed_in=0
 export signed_in
 
+alias npx="npx --prefix=/var/www/shttr/app/assets"
+
 . ${SHTTR_APP}/globals.sh
 . ${SHTTR_APP}/controllers/${CONTROLLER}
