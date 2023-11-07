@@ -1,4 +1,4 @@
-###### Usage Instructions:
+###### Basic Usage Instructions:
 
 - The two main directories you'll want to pay attention to in the root of your Shttr project are `cgi-bin` and `shttr`.
 - The `cgi-bin` directory contains the scripts that are the first to be executed by the server. Each script is the same, and it mainly just sets up the environment Shttr needs to handle the rest of the execution.
@@ -10,6 +10,7 @@
 - After the script in `cgi-bin` finishes, it hands execution over to the Shttr program, which finishes defining the environment and gathering assets, and finally hands control over to the page's controller script.
 - Generating new pages is done using ShttrCLI. In the root of your project, run `shttr g page [page name]` to generate the cgi-bin script, as well as a blank model, view, and controller for your page. If ShttrCLI finds a `nav.html` partial in the shared views directory, it will automatically be included in the new page's view. Who doesn't love convention over configuration?
 - Pages can be deleted from your project with ShttrCLI as well by running `shttr r page [page name]`.
+- The `shttr/app/globals.sh` file contains any extra prep work that needs to happen on all pages before the controller is run. It's common to import Node modules here that will be used on all pages. See the [source code for calebstein.net](https://git.calebstein.net/calebstein1/calebstein-web){target=_blank} for an example of this in practice.
 - The `shttr/app/assets` directory holds any assets your page can use.
 - The `stylesheets` directory within `assets` is where you'll put any css or scss files for your site. Running `shttr c` in the root of your project will compile all css and scss in the `stylesheets` directory into one css file named with a checksum digest and place it in the `public` directory under assets. This compiled css file will automatically be found by Shttr on the server and inserted into the `<head>` of every page.
 - Running `shttr d -c` will compile the stylesheets prior to deploying to the server. saving the step of an independent `shttr c`. The reason the compilation needs to be specified explicitly is because the sass compiler used by Shttr is quite slow, and so the compilation can take some time, especially if you're using Bootstrap. It makes sense to only recompile the stylesheets if the stylesheets themselves have actually changed, so if you make a change to the stylesheets, run `shttr d -c` for your next deploy, otherwise, just run `shttr d` to skip the compile step.
