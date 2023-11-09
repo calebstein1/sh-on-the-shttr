@@ -4,9 +4,7 @@ if [ "$REQUEST_METHOD" = "POST" ]; then
 
   [ -z $auth_token ] && auth_token="no auth token provided"
 
-  if [ "$auth_token" = "$form_auth_token" ]; then
-    do_redirect
-  else
+  if [ "$auth_token" != "$form_auth_token" ]; then
     do_error
     exit 1
   fi
