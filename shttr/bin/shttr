@@ -22,6 +22,8 @@ for VENDOR_SCRIPT in $VENDOR_SCRIPT_LIST; do
 done
 export VENDOR_SCRIPTS
 
+validated=0
+export validated
 signed_in=0
 export signed_in
 

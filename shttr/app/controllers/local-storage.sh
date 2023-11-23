@@ -15,7 +15,7 @@ fi
 
 if [ "$REQUEST_METHOD" = "POST" ]; then
   if [ -z $_method ]; then
-    if [ $validated ]; then
+    if [ $validated -eq 1 ]; then
       file_id=$(create_table_entry in comments)
       write_data "${file_id}" name "${name}" to comments
       write_data "${file_id}" content "${content}" to comments
