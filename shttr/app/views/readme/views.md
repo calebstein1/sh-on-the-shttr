@@ -1,0 +1,11 @@
+##### View Instructions
+
+- The view is what actually builds the page that is ultimately sent back to the client's browser.
+- The view is made up of two parts: the view script, found at `shttr/app/views/PAGE.sh`; and the view partials, found in the `shttr/app/views/PAGE` directory.
+- The view script should _always_ start off with `use esh` at least, though if you're using the `pd` module, you'll want to include it in the view as well.
+- The view script will for the most part be assembling partials for which there are three different methods that can be used: `v`, `vf`, and `pd`.
+- Each of these view methods takes a partial as an arguement, either as just a filename, or as a filename with a parent directory. For example, assuming we're on the about page, `v index.html` would refer to `shttr/app/views/about/index.html`, whereas `v shared/app.html` would refer to `shttr/app/views/shared/app.html`. In this way, it's easy to grab partials from both the current page's own directory, as well as other shared partials.
+- The `v` method is the most basic view method and comes in the `esh` module. It simply replaces any environment variables it finds in the html partial with their proper values, but otherwise outputs the html as is.
+- The `vf` method comes from the `form` module. It is for use with partials containing forms. In addition to the environment variable substitution, it adds the correct csrf protection token field to each form within the partial.
+- The `pd` method comes from the `pd` module. It is for use with non-html files assuming that Pandoc is installed on the server. It allows for any filetype that Pandoc supports to be converted to html on the fly, and then it performs the same environment variable substitution that `v` and `vf` perform. The `pd` method is most commonly used with Markdown files, but it can theoretically be used with any filetype supported by Pandoc.
+- The view script can also contain general logic, which is useful for determining which partials to load based on a condition, or for iterating over lists. The `local-storage` page on this site is a fantastic example, as it uses conditionals based on whether a user is signed in or not, and a loop for each comment.
