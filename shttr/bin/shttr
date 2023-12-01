@@ -27,7 +27,7 @@ export validated
 signed_in=0
 export signed_in
 
-alias npx="npx --prefix=/var/www/shttr/app/assets"
+alias npx="npx --prefix=${SHTTR_APP}/assets"
 
 . ${SHTTR_APP}/globals.sh
 . ${SHTTR_APP}/controllers/${CONTROLLER}
