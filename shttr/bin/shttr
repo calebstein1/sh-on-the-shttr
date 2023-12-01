@@ -22,6 +22,8 @@ for VENDOR_SCRIPT in $VENDOR_SCRIPT_LIST; do
 done
 export VENDOR_SCRIPTS
 
+[ -z $DEBUG_MODE ] && DEBUG_MODE=0
+export DEBUG_MODE
 validated=0
 export validated
 signed_in=0

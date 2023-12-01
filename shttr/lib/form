@@ -1,12 +1,16 @@
 if [ "$REQUEST_METHOD" = "POST" ]; then
-  parse_input
-  parse_cookies
+  if [ $DEBUG_MODE -eq 0 ]; then
+    parse_input
+    parse_cookies
 
-  [ -z $auth_token ] && auth_token="no auth token provided"
+    [ -z $auth_token ] && auth_token="no auth token provided"
 
-  if [ "$auth_token" != "$form_auth_token" ]; then
-    do_error
-    exit 1
+    if [ "$auth_token" != "$form_auth_token" ]; then
+      do_error
+      exit 1
+    fi
+  else
+    parse_input
   fi
 else
   new_form_auth_token=$(openssl rand -hex 32)

@@ -12,12 +12,14 @@ parse_input() {
       export $query_var
     done
 
-    post_list=$(cat | tr "&" " ")
-    for post_var in $post_list; do
-      verify_input "$post_var" &&\
-      eval $post_var
-      export $post_var
-    done
+    if [ $DEBUG_MODE -eq 0 ]; then
+      post_list=$(cat | tr "&" " ")
+      for post_var in $post_list; do
+        verify_input "$post_var" &&\
+        eval $post_var
+        export $post_var
+      done
+    fi
     input_parsed=1
   fi
 }
