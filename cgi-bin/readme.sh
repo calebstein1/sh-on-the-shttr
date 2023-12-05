@@ -1,8 +1,8 @@
 #!/bin/sh
 
-SHTTR_BIN="/var/www/shttr/bin"
-SHTTR_LIB="/var/www/shttr/lib"
-SHTTR_APP="/var/www/shttr/app"
+SHTTR_BIN="/usr/local/apache2/htdocs/bin"
+SHTTR_LIB="/usr/local/apache2/htdocs/lib"
+SHTTR_APP="/usr/local/apache2/htdocs/app"
 SHTTR_ASSETS="/app/assets"
 export SHTTR_BIN
 export SHTTR_LIB
