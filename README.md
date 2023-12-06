@@ -1,11 +1,10 @@
 # :toilet: Shell on the Shttr :toilet:
+## The Blue Bag Update
 
-Shell on the Shttr is a cutting-edge, databaseless backend web framework built using shell scripts.
+Shell on the Shttr is a containerized backend web framework built using shell scripts.
 
-The live demo example page can be found at [shttr.io](https://shttr.io).
+The (somewhat depricated) live demo example page can be found at [shttr.io](https://shttr.io).
 
-See the [instructions page](https://shttr.io/cgi-bin/readme.sh) at [shttr.io](https://shttr.io), or the [Shttr CLI](https://github.com/calebstein1/shttr) repo for detailed installation and usage instructions.
+See the (very depricated) [instructions page](https://shttr.io/cgi-bin/readme.sh) at [shttr.io](https://shttr.io), or the (not depricated) [Shttr CLI](https://github.com/calebstein1/shttr) repo for more installation and usage instructions.
 
-Shell on the Shttr requires a functioning http server with CGI capability. It has been tested on Debian running Apache2, which works well.
-
-Pandoc and postfix are optional dependencies for the PD and Mailer modules respectively.
+At this point with the Blue Bag Update, you're mostly on your own, but if you know how to deploy a Docker container and you don't need to use ShttrDB (currently broken in deployment), you'll be ok. Rest assured that new documentation and a fix for ShttrDB are on the way!
