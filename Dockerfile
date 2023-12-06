@@ -12,4 +12,4 @@ COPY cgi-bin/ /usr/local/apache2/cgi-bin/
 
 EXPOSE 80
 
-CMD httpd-foreground -c "LoadModule cgid_module modules/mod_cgid.so"
+ENTRYPOINT ["httpd-foreground", "-c", "LoadModule cgid_module modules/mod_cgid.so"]
