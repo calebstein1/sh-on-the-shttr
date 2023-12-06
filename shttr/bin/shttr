@@ -11,6 +11,17 @@ use() {
   done
 }
 
+[ -z $DEBUG_MODE ] && DEBUG_MODE=0
+if [ $DEBUG_MODE -eq 1 ]; then
+  SERVER_TYPE="DEBUG"
+fi
+export DEBUG_MODE
+
+if [ -z "$SERVER_TYPE" ]; then
+  SERVER_TYPE="PRODUCTION"
+fi
+export SERVER_TYPE
+
 CONTROLLER=${SCRIPT_FILENAME##*/}
 export CONTROLLER
 
@@ -23,8 +34,6 @@ for VENDOR_SCRIPT in $VENDOR_SCRIPT_LIST; do
 done
 export VENDOR_SCRIPTS
 
-[ -z $DEBUG_MODE ] && DEBUG_MODE=0
-export DEBUG_MODE
 validated=0
 export validated
 signed_in=0

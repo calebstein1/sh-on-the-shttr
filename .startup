@@ -1,0 +1,3 @@
+#!/bin/sh
+
+SERVER_TYPE=$SERVER_TYPE exec httpd-foreground -c "LoadModule cgid_module modules/mod_cgid.so"
