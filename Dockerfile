@@ -1,7 +1,7 @@
 FROM httpd:latest
 
 RUN apt-get update && \
-    apt-get install -y gettext pandoc
+    apt-get install -y fish gettext pandoc
 RUN sed -i '/^ServerRoot/ a DirectoryIndex "/cgi-bin/index.sh"' /usr/local/apache2/conf/httpd.conf
 RUN sed -i '/^DirectoryIndex/ a PassEnv SERVER_TYPE' /usr/local/apache2/conf/httpd.conf
 RUN mkdir -p /var/shttrdb && \
