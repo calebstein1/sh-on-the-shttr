@@ -1,12 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env fish
 
-SHTTR_BIN="/usr/local/apache2/htdocs/bin"
-SHTTR_LIB="/usr/local/apache2/htdocs/lib"
-SHTTR_APP="/usr/local/apache2/htdocs/app"
-SHTTR_ASSETS="/app/assets"
-export SHTTR_BIN
-export SHTTR_LIB
-export SHTTR_APP
-export SHTTR_ASSETS
+set -gx SHTTR_BIN "/usr/local/apache2/htdocs/bin"
+set -gx SHTTR_LIB "/usr/local/apache2/htdocs/lib"
+set -gx SHTTR_APP "/usr/local/apache2/htdocs/app"
+set -gx SHTTR_ASSETS "/app/assets"
 
-sh ${SHTTR_BIN}/shttr
+fish {$SHTTR_BIN}/shttr
