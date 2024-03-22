@@ -1,3 +1,10 @@
+if [ "$(uname)" = "Darwin" ]; then
+    FIND_CMD=gfind
+else
+    FIND_CMD=find
+fi
+export FIND_CMD
+
 use() {
   while [ $1 ]; do
     if [ -f ${SHTTR_LIB}/${1%,} ]; then
@@ -25,10 +32,10 @@ export SERVER_TYPE
 CONTROLLER=${SCRIPT_FILENAME##*/}
 export CONTROLLER
 
-STYLESHEET="${SHTTR_ASSETS}/public/$(find ${SHTTR_APP}/assets/public/*.css -printf %f)"
+STYLESHEET="${SHTTR_ASSETS}/public/$(${FIND_CMD} ${SHTTR_APP}/assets/public/*.css -printf %f)"
 export STYLESHEET
 
-VENDOR_SCRIPT_LIST="$(find ${SHTTR_APP}/assets/scripts/vendored/*.js -type f -exec basename {} \;)"
+VENDOR_SCRIPT_LIST="$(${FIND_CMD} ${SHTTR_APP}/assets/scripts/vendored/*.js -type f -exec basename {} \;)"
 for VENDOR_SCRIPT in $VENDOR_SCRIPT_LIST; do
   VENDOR_SCRIPTS="${VENDOR_SCRIPTS}<script src=\"${SHTTR_ASSETS}/scripts/vendored/${VENDOR_SCRIPT}\"></script>"
 done
