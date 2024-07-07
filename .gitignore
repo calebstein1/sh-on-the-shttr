@@ -5,6 +5,6 @@ bootstrap
 shttr-config
 node_modules
 package-lock.json
-shttrdb
+shttrdb/
 sh-on-the-shttr.zip
 config.sh
