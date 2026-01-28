@@ -50,3 +50,5 @@ alias npx="npx --prefix=${SHTTR_APP}/assets"
 
 . ${SHTTR_APP}/globals.sh
 . ${SHTTR_APP}/controllers/${CONTROLLER}
+. ${SHTTR_APP}/models/${CONTROLLER}
+. ${SHTTR_APP}/views/${CONTROLLER}
