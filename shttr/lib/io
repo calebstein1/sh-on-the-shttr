@@ -46,7 +46,12 @@ url_string_decode() {
 }
 
 verify_input() {
-  if [ -z $(echo "$1" | grep "=") ]; then
+  if echo "$1" | grep -v "="; then
+    echo "error"
+    exit 1
+  fi
+
+  if echo "$1" | grep ";"; then
     echo "error"
     exit 1
   fi
